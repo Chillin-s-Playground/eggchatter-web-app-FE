@@ -3,22 +3,23 @@
 import LongButton from "@/components/LongButton";
 import PageIndicator from "@/components/PageIndicator";
 import ProfileArea from "@/components/ProfileArea";
-import { ButtonBase, TextField } from "@mui/material";
+import TextInput from "@/components/TextInput";
+import { ButtonBase } from "@mui/material";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { useEasterEggStore } from "../store";
+import { useEasterEggStore } from "../store/userStore";
 
 const ProfileList = [
-    {alt : "ecstatic", src : "/assets/ecstatic.png"},
-    {alt : "bad", src : "/assets/bad.png"},
-    {alt : "crying", src : "/assets/crying.png"},
-    {alt : "angry", src : "/assets/angry.png"},
-    {alt : "coll", src : "/assets/cool.png"},
-    {alt : "happy", src : "/assets/happy.png"},
-    {alt : "neutral", src : "/assets/neutral.png"},
-    {alt : "smile", src : "/assets/smile.png"},
-    {alt : "sad", src : "/assets/sad.png"},
+    {alt : "smile", src : "/assets/smile.webp"},
+    {alt : "happy", src : "/assets/happy.webp"},
+    {alt : "crying", src : "/assets/crying.webp"},
+    {alt : "angry", src : "/assets/angry.webp"},
+    {alt : "wow", src : "/assets/wow.webp"},
+    {alt : "bad", src : "/assets/bad.webp"},
+    {alt : "love", src : "/assets/love.webp"},
+    {alt : "neutral", src : "/assets/neutral.webp"},
+    {alt : "sad", src : "/assets/sad.webp"},
 ]
 
 const EasterEgg = () => {
@@ -50,7 +51,7 @@ const ProfileImage = () => {
     }
 
     const checkProfile = () => {
-        if(profile === "" || profile === "/assets/user.png"){
+        if(profile === "" || profile === "/assets/user.webp"){
             alert("프로필 이모지를 선택해 주세요.")
             return false
         }
@@ -88,10 +89,11 @@ const ProfileImage = () => {
 }
 
 const NickName = () => {
+    const router = useRouter()
+
+    const [error, setError] = useState(false)
     const nickname = useEasterEggStore((state) => state.nickname)
     const setNickname = useEasterEggStore((state) => state.setNickname)
-    const setProfile = useEasterEggStore((state) => state.setProfile)
-    const [error, setError] = useState(false)
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         const { target : { value } } = e
@@ -107,25 +109,20 @@ const NickName = () => {
 
     const updateUserInfo = async() => {
         // await axios
-        alert("프로필 등록 완료")
-        setProfile("/assets/user.png")
-        setNickname("")
+        // alert("프로필 등록 완료")
+        router.push("/easter")
+        
     }
 
     return (
         <div className="flex justify-center">
-            <TextField
-                required
-                id="outlined-required"
+            <TextInput
                 label="닉네임"
+                name="nickname"
                 value={nickname}
                 error={error}
                 helperText={error ? "닉네임은 8글자 이하로 입력해주세요." : ""}
-                onChange={handleChange}
-                sx={{
-                    width : "100%",
-                    maxWidth : "28rem"
-                }}
+                handleChange={handleChange}
             />
 
             <LongButton text="확인" onClick={updateUserInfo}/>
