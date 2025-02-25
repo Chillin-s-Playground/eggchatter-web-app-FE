@@ -16,12 +16,13 @@ const Login = () => {
         <div>
             {/* 에그채터 로고 */}
             <div className="flex justify-center items-center mt-36">
-            <Image 
-                src='/assets/logo.png' 
-                alt="로고" 
-                width={240} 
-                height={0}
-                className="drop-shadow-lg"
+                <Image 
+                    src='/assets/logo.png' 
+                    alt="로고" 
+                    width={240} 
+                    height={120}
+                    priority
+                    className="drop-shadow-lg"
                 />
             </div>
 

@@ -9,7 +9,7 @@ interface EasterEggState {
 
 export const useEasterEggStore = create<EasterEggState>((set) => ({
     nickname : "", 
-    profile : "/assets/user.png",
+    profile : "/assets/user.webp",
     setNickname: (nickname) => set({ nickname }),
     setProfile: (profile) => set({ profile }),
 }))
