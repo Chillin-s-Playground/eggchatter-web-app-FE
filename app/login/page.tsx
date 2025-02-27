@@ -1,6 +1,6 @@
 "use client"
 
-import LongButton from "@/components/LongButton";
+import LongButton from "@/components/LongBottomButton";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

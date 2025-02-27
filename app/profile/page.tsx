@@ -1,6 +1,6 @@
 "use client"
 
-import LongButton from "@/components/LongButton";
+import LongButton from "@/components/LongBottomButton";
 import PageIndicator from "@/components/PageIndicator";
 import ProfileArea from "@/components/ProfileArea";
 import TextInput from "@/components/TextInput";

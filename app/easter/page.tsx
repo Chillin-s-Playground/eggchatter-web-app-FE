@@ -1,6 +1,7 @@
 "use client"
 
 import BottomSheet from "@/components/BottomSheet";
+import LongButton from "@/components/LongButton";
 import PageIndicator from "@/components/PageIndicator";
 import ProfileArea from "@/components/ProfileArea";
 import TextInput from "@/components/TextInput";
@@ -202,20 +203,8 @@ const EasterEgg = () => {
                         unoptimized
                         style={{ margin : "0 auto"}}
                     />
-
-                    <ButtonBase 
-                        sx={{ 
-                            border: "1px solid #717171",
-                            padding : "0.1rem 0.8rem",
-                            fontSize : "0.9rem",
-                            color : "#717171",
-                            borderRadius: "0.375rem",
-                            marginTop : "0.8rem",
-                        }}
-                        onClick={addEasterEgg}
-                    >
-                        추가 +
-                    </ButtonBase>
+                    
+                    <LongButton text="추가하기" handleClickEvent={addEasterEgg}/>
                 </div>
             )}
 
@@ -284,20 +273,7 @@ const EasterEgg = () => {
                     </div>
 
                     {GIF_URLS.length > 0 && (
-                        <ButtonBase
-                            sx={{
-                                border : "1px solid #717171",
-                                padding: "1rem",
-                                borderRadius: "0.375rem",
-                                width: "100%",
-                                maxWidth: "28rem",
-                                display: "block",
-                                marginTop: "1.4rem",
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                            }}
-                            onClick={async() => await searchGIPHY(pageNo + 1)}
-                        >다음</ButtonBase>
+                        <LongButton text="다음" handleClickEvent={async() => await searchGIPHY(pageNo + 1)}/>
                     )}
                 </div>
                     
