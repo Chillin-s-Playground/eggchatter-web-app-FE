@@ -1,44 +1,29 @@
 import { ButtonBase } from "@mui/material";
-import React from "react";
 
 interface LongButtonProps {
-  text: string;
-  onClick : () => void;
-  status?: "active" | "inactive";
-  children?: React.ReactNode;
+    text: string;
+    handleClickEvent?: () => void | Promise<void>; // 비동기 또는 동기 함수 허용
 }
 
-const LongButton = ({ text, status = "inactive", onClick, children }: LongButtonProps) => {
-  const statusColors = {
-    active: "#FFE033",
-    inactive: "#D9D9D9",
-  };
+const LongButton = ({
+    text,
+    handleClickEvent
+} : LongButtonProps) => {
+    return (
+        <ButtonBase 
+            sx={{
+                width : "100%",
+                border: "1px solid #717171",
+                padding : "0.8rem",
+                color : "#717171",
+                borderRadius: "0.375rem",
+                marginTop : "0.8rem",
+            }}
+            onClick={handleClickEvent}
+        >
+            {text}
+        </ButtonBase>
+    )
+}
 
-  const dynamicBgColor = statusColors[status];
-
-  return (
-    <ButtonBase 
-      sx={{
-        backgroundColor: dynamicBgColor, 
-        padding: "1rem",
-        borderRadius: "0.375rem",
-        width: "100%",
-        maxWidth: "28rem",
-        display: "block",
-        margin: "0 auto",
-        position: "fixed",
-        bottom: "32px",
-        left: "0",
-        right: "0",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-      onClick={onClick}
-    >
-      <p>{text}</p>
-      {children}
-    </ButtonBase>
-  );
-};
-
-export default LongButton;
+export default LongButton
