@@ -17,7 +17,7 @@ const Login = () => {
             {/* 에그채터 로고 */}
             <div className="flex justify-center items-center mt-36">
                 <Image 
-                    src='/assets/logo.png' 
+                    src='/assets/logo.webp' 
                     alt="로고" 
                     width={240} 
                     height={120}
