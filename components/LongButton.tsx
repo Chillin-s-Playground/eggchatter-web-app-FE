@@ -13,9 +13,9 @@ const LongButton = ({
         <ButtonBase 
             sx={{
                 width : "100%",
-                border: "1px solid #717171",
+                border: "1px solid #212322",
                 padding : "0.8rem",
-                color : "#717171",
+                fontWeight : "medium",
                 borderRadius: "0.375rem",
                 marginTop : "0.8rem",
             }}

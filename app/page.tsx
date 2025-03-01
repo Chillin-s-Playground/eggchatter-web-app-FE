@@ -127,13 +127,13 @@ const ChatItem = ({
           />     
         </div>
  
-        <div className="mx-2 pt-1">
-          <p className="">{last_sender_nickname}</p>
+        <div className="mx-4 pt-1">
+          <p className="font-semibold">{last_sender_nickname}</p>
           <p className="text-base truncate w-[20ch]">{last_message_text}</p>
         </div>
 
         <div className="pt-1 ml-auto text-right text-base">
-          <p>{last_message_time}</p>
+          <p className="text-sm text-[#969797] mb-1">{last_message_time}</p>
           <Chip
             label={`${corrected_count}/3`}
             variant="outlined"

@@ -146,7 +146,7 @@ const EasterEgg = () => {
             <PageIndicator text="이스터에그 생성"/>
             <ProfileArea profile={profile}/>
 
-            <div className="h-24">
+            <div className="h-[5.5rem]">
                 <TextInput
                     label="이스터에그 단어"
                     value={easterInfo.egg_word}
@@ -157,7 +157,7 @@ const EasterEgg = () => {
                 />
             </div>
 
-            <div className="h-24">
+            <div className="h-[5.5rem]">
                 <TextInput
                     label="힌트"
                     name="hint"
@@ -168,7 +168,7 @@ const EasterEgg = () => {
                 />
             </div>
 
-            <div className="h-24">
+            <div className="h-[5.2rem]">
                 <ButtonBase
                     sx={{
                         padding: "1rem",
@@ -193,7 +193,7 @@ const EasterEgg = () => {
             {easterInfo.gif_url !== "" && (
 
                 <div className="w-full mx-auto">
-                    <p className="text-base mb-4 text-[#717171]">선택한 움짤</p>
+                    <p className="text-base text-[#717171]">선택한 움짤</p>
                     <Image 
                         src={easterInfo.gif_url}
                         alt="이스터에그 움짤" 
@@ -211,15 +211,16 @@ const EasterEgg = () => {
             {/* 내 이스터에그 */}
             {createEasterInfo.length > 0 && (
             <div className="mt-2">
-                <hr className="border-t border-gray-300 my-4" />
+                <hr className="border-t border-gray-300 mb-12" />
 
                 <div className="grid grid-cols-3 gap-x-2">
                     {createEasterInfo.map((easter, idx) => {
                         return (
                             <div key={`${easter.hint}-${idx}`}>
-                                <p>{idx+1}. {easter.egg_word}</p>
 
-                                <div className="w-32 h-32">
+
+                                <p className="font-medium mb-2">{easter.egg_word}</p>
+                                <div className="w-32 h-32 mb-4">
                                     <Image 
                                         src={easter.gif_url}
                                         alt="추가한 이스터에그 움짤" 
@@ -228,9 +229,10 @@ const EasterEgg = () => {
                                         layout="responsive"
                                         unoptimized
                                         style={{ margin : "0 auto"}}
-                                    />
+                                        />
 
                                 </div>
+
                             </div>
                         )
                     })}
@@ -280,21 +282,7 @@ const EasterEgg = () => {
             </BottomSheet>
             
             {createEasterInfo.length > 0 && (
-                <ButtonBase
-                    sx={{
-                        bgcolor : "white",
-                        border : "1px solid #717171",
-                        padding: "1rem",
-                        borderRadius: "0.375rem",
-                        width: "100%",
-                        maxWidth: "28rem",
-                        display: "block",
-                        marginTop: "2rem",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                    }}
-                onClick={async() => await searchGIPHY(pageNo + 1)}
-            >생성하기</ButtonBase>
+                <LongButton text="생성하기" handleClickEvent={async() => await searchGIPHY(pageNo + 1)}/>
             )}
         </div>
     )

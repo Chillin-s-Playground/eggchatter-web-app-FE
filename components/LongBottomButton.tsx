@@ -8,7 +8,7 @@ interface LongButtonProps {
   children?: React.ReactNode;
 }
 
-const LongButton = ({ text, status = "inactive", onClick, children }: LongButtonProps) => {
+const LongButton = ({ text, status = "active", onClick, children }: LongButtonProps) => {
   const statusColors = {
     active: "#FFE033",
     inactive: "#D9D9D9",
@@ -35,7 +35,7 @@ const LongButton = ({ text, status = "inactive", onClick, children }: LongButton
       }}
       onClick={onClick}
     >
-      <p>{text}</p>
+      <p className="font-[500]">{text}</p>
       {children}
     </ButtonBase>
   );

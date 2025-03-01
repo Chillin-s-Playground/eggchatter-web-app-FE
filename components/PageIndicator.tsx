@@ -10,7 +10,7 @@ interface PageIndicatorProps {
 const PageIndicator = ({ text, hasMenu, handleClickMenu } : PageIndicatorProps) => {
     return (
         <div className='flex justify-between items-center w-full'>
-            <p className='text-xl'>{text}</p>
+            <p className='text-2xl font-bold'>{text}</p>
 
             {hasMenu && (
                 <IconButton
