@@ -1,10 +1,12 @@
 "use client"
 
 import BottomSheet from "@/components/BottomSheet";
+import LongBottomButton from "@/components/LongBottomButton";
 import LongButton from "@/components/LongButton";
 import PageIndicator from "@/components/PageIndicator";
 import ProfileArea from "@/components/ProfileArea";
 import TextInput from "@/components/TextInput";
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import SearchIcon from "@mui/icons-material/Search";
 import { ButtonBase, IconButton } from "@mui/material";
 import axios from "axios";
@@ -194,17 +196,33 @@ const EasterEgg = () => {
 
                 <div className="w-full mx-auto">
                     <p className="text-base text-[#717171]">선택한 움짤</p>
-                    <Image 
-                        src={easterInfo.gif_url}
-                        alt="이스터에그 움짤" 
-                        width={200} 
-                        height={200} 
-                        layout="intrinsic" 
-                        unoptimized
-                        style={{ margin : "0 auto"}}
-                    />
-                    
-                    <LongButton text="추가하기" handleClickEvent={addEasterEgg}/>
+                    <div className="relative">
+                        <ButtonBase 
+                            sx={{
+                                position : "absolute",
+                                zIndex : "10",
+                                width : "3.6rem",
+                                height : "2rem",
+                                backgroundColor : "white",
+                                right : "12%",
+                                bottom : "0",
+                                border: "1.6px solid #717171",
+                                borderRadius: "0.375rem",
+                            }}
+                            onClick={addEasterEgg}
+                        >
+                            <AddRoundedIcon/>
+                        </ButtonBase>
+                        <Image 
+                            src={easterInfo.gif_url}
+                            alt="이스터에그 움짤" 
+                            width={200} 
+                            height={200} 
+                            layout="intrinsic" 
+                            unoptimized
+                            style={{ margin : "0 auto"}}
+                        />
+                    </div>
                 </div>
             )}
 
@@ -282,7 +300,7 @@ const EasterEgg = () => {
             </BottomSheet>
             
             {createEasterInfo.length > 0 && (
-                <LongButton text="생성하기" handleClickEvent={async() => await searchGIPHY(pageNo + 1)}/>
+                <LongBottomButton text="추가하기" status="inactive" handleClickEvent={async() => await searchGIPHY(pageNo + 1)}/>
             )}
         </div>
     )
