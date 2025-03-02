@@ -1,6 +1,6 @@
 "use client"
 
-import LongButton from "@/components/LongBottomButton";
+import { default as LongBottomButton } from "@/components/LongBottomButton";
 import PageIndicator from "@/components/PageIndicator";
 import ProfileArea from "@/components/ProfileArea";
 import TextInput from "@/components/TextInput";
@@ -52,7 +52,7 @@ const ProfileImage = () => {
 
     const checkProfile = () => {
         if(profile === "" || profile === "/assets/user.webp"){
-            alert("프로필 이모지를 선택해 주세요.")
+            alert("프로필을 선택해주세요.")
             return false
         }
 
@@ -82,8 +82,17 @@ const ProfileImage = () => {
                     </ButtonBase>
                 ))}
             </div>
-            
-            <LongButton text="확인" onClick={moveTo}/>
+
+            <LongBottomButton 
+                text="확인"
+                status={
+                    `${
+                        (!profile || profile === "/assets/user.webp")
+                        ? "inactive" 
+                        : "active"
+                    }`
+                } 
+                handleClickEvent={moveTo}/>
         </div>
     )
 }
@@ -125,7 +134,16 @@ const NickName = () => {
                 handleChange={handleChange}
             />
 
-            <LongButton text="확인" onClick={updateUserInfo}/>
+            <LongBottomButton 
+                text="확인"
+                status={
+                    `${
+                        (!nickname || nickname.length > 8)
+                        ? "inactive" 
+                        : "active"
+                    }`
+                } 
+                handleClickEvent={updateUserInfo}/>
         </div>
     )
 }
