@@ -3,12 +3,12 @@ import React from "react";
 
 interface LongButtonProps {
   text: string;
-  onClick : () => void;
+  handleClickEvent : () => void;
   status?: "active" | "inactive";
   children?: React.ReactNode;
 }
 
-const LongButton = ({ text, status = "active", onClick, children }: LongButtonProps) => {
+const LongButton = ({ text, status = "inactive", handleClickEvent, children }: LongButtonProps) => {
   const statusColors = {
     active: "#FFE033",
     inactive: "#D9D9D9",
@@ -18,6 +18,7 @@ const LongButton = ({ text, status = "active", onClick, children }: LongButtonPr
 
   return (
     <ButtonBase 
+      disabled={status === "inactive"}
       sx={{
         backgroundColor: dynamicBgColor, 
         padding: "1rem",
@@ -32,8 +33,11 @@ const LongButton = ({ text, status = "active", onClick, children }: LongButtonPr
         right: "0",
         marginLeft: "auto",
         marginRight: "auto",
+        '&:hover' : {
+            backgroundColor : "#FFE033"
+        }
       }}
-      onClick={onClick}
+      onClick={handleClickEvent}
     >
       <p className="font-[500]">{text}</p>
       {children}
