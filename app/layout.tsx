@@ -1,17 +1,18 @@
 "use client";
 
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { useEffect, useState, useTransition } from "react";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const bmJua = localFont({
+  src: [
+    {
+      path: "./font/BMJUA_ttf.ttf",
+      weight: "normal",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bm-jua",
 });
 
 export default function RootLayout({
@@ -33,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-[#212322]`}
+        className={`${bmJua.variable} antialiased text-[#212322] font-bm-jua`}
       >
         {loading && (
           <div className="fixed inset-0 flex justify-center items-center bg-opacity-50 bg-black z-50">
@@ -41,7 +42,7 @@ export default function RootLayout({
           </div>
         )}
         
-        <div className="flex justify-center items-start min-h-screen dot-patter font text-lg">
+        <div className="flex justify-center items-start min-h-screen dot-patter font text-xl">
           <div className="max-w-lg w-full min-h-screen border-2 bg-white py-10 px-8">
             {children}
           </div>
