@@ -12,6 +12,7 @@ const giphyDomains = [
 
 const nextConfig: NextConfig = {
   /* config options here */
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
   images: {
     formats: ['image/webp'],
     domains: giphyDomains
