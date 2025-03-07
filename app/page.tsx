@@ -6,6 +6,7 @@ import { ButtonBase, Chip } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+
 interface ChatItemProps {
   room_id : number, 
   last_message_time : string
@@ -77,7 +78,7 @@ const Home = () => {
   const router = useRouter()
 
   const moveToMange = () => {
-    router.push("/manage")
+    router.push("/mypage")
   }
 
   return (
