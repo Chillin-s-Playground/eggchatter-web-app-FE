@@ -146,7 +146,10 @@ const EasterEgg = () => {
     return (
         <div>
             <PageIndicator text="이스터에그 생성"/>
-            <ProfileArea profile={profile}/>
+
+            <div className="my-12">
+                <ProfileArea profile={profile}/>
+            </div>
 
             <div className="h-[5.5rem]">
                 <TextInput

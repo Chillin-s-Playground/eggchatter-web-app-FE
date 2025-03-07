@@ -33,7 +33,9 @@ const EasterEgg = () => {
             <PageIndicator text="프로필"/>
 
             {/* 프로필 이미지 영역 */}
-            <ProfileArea profile={profile}/>
+            <div className="my-12">
+                <ProfileArea profile={profile}/>
+            </div>
 
             {/* 작성 영역 */}
             {step === "1" ? <ProfileImage/> : <NickName/>}

@@ -7,8 +7,7 @@ interface ProfileAreaProps {
 const ProfileArea = ({ profile = '/assets/logo.png' } : ProfileAreaProps) => {
 
     return (
-        <div className="w-[120px] h-[120px] rounded-full mx-auto mt-10 mb-12">
-            
+        <div className="w-[120px] h-[120px] rounded-full mx-auto">
             <Image
                 src={profile}
                 alt=""
