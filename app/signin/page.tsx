@@ -4,7 +4,7 @@ import { ButtonBase } from "@mui/material";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-const Login = () => {
+const SignIn = () => {
 
     return(
         <div>
@@ -37,7 +37,6 @@ const Login = () => {
                     right: "0",
                     margin: "0 auto",
                 }}
-                // onClick={moveTo}
                 onClick={() => signIn("kakao")}
             >
 
@@ -55,4 +54,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default SignIn

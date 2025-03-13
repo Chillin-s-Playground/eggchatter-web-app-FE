@@ -1,3 +1,4 @@
+import axios from 'axios';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import KakaoProvider from 'next-auth/providers/kakao';
 
@@ -10,22 +11,42 @@ const authOptions:NextAuthOptions = {
         })
     ],
     callbacks : {
-        async redirect({ url, baseUrl}){
-            return url.startsWith(baseUrl) ? url : `${baseUrl}/profile?step=1`
+        async redirect({ baseUrl }) {
+            return `${baseUrl}/profile?step=1`;
         },
         async jwt({ token, account, profile}) {
-            if(account) {
-                token.accessToken = account.access_token;
-                token.id = profile?.id
+            if(account && token && profile) {
+                try{
+                    const { data } = await axios.post(
+                        "http://127.0.0.1:8080/auth/signin", 
+                        {   
+                            social_id: `${profile.id}`, 
+                            login_type: "KAKAO"
+                        },
+                        {
+                            headers: {
+                                "access-token": account.access_token,
+                                "refresh-token": account.refresh_token,
+                                "Content-Type": "application/json"
+                            }
+                        }
+                    );
+                    
+                    const token_data = data.data
+                    token.accessToken = token_data.access_token
+                    token.refreshToken = token_data.refresh_token
+                } catch(error){
+                    console.error("Error", error)
+                }
+
+                return token
             }
             return token
         },
         async session({session, token}){
-            if(session.user){
-                session.user.id = token.id;
-                session.accessToken = token.accessToken;
-            }
-            return session
+            session.accessToken = token.accessToken; 
+            session.refreshToken = token.refreshToken;
+            return session;
         }
     }
     // secret: process.env.NEXTAUTH_SECRET,
