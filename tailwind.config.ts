@@ -14,6 +14,9 @@ export default {
         customYellow: '#FFE033',
         customGray: '#D9D9D9',
       },
+      fontFamily: {
+        jalnan: ['jalnan-font', 'sans-serif'], // 'jalnan-font' 설정
+      },
     },
   },
   plugins: [],

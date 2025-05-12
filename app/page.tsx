@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 
 interface ChatItemProps {
   room_id : number, 
+  room_name : string, 
   last_message_time : string
   last_message_text : string
   last_sender_nickname : string
@@ -20,6 +21,7 @@ interface ChatItemProps {
 const DUMMY_DATA = [
   {
     room_id : 1, 
+    room_name : `방이름 : ${1}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕alsdjlajdlajdlajdlajdlajdljadlajdlajd",
     last_sender_nickname : "췰린코줍",
@@ -29,6 +31,7 @@ const DUMMY_DATA = [
   },
   {
     room_id : 2, 
+    room_name : `방이름 : ${2}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕",
     last_sender_nickname : "췰린코줍",
@@ -38,6 +41,7 @@ const DUMMY_DATA = [
   },
   {
     room_id : 3, 
+    room_name : `방이름 : ${3}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕",
     last_sender_nickname : "췰린코줍",
@@ -47,6 +51,7 @@ const DUMMY_DATA = [
   },
   {
     room_id : 4, 
+    room_name : `방이름 : ${4}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕alsdjlajdlajdlajdlajdlajdljadlajdlajd",
     last_sender_nickname : "췰린코줍",
@@ -56,6 +61,7 @@ const DUMMY_DATA = [
   },
   {
     room_id : 5, 
+    room_name : `방이름 : ${5}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕",
     last_sender_nickname : "췰린코줍",
@@ -65,6 +71,7 @@ const DUMMY_DATA = [
   },
   {
     room_id : 6, 
+    room_name : `방이름 : ${6}`,
     last_message_time : "2025-02-25 23:59:59",
     last_message_text : "안녕",
     last_sender_nickname : "췰린코줍",
@@ -90,6 +97,7 @@ const Home = () => {
           <ChatItem
             key={`${data.last_message_text}-${idx}`}
             room_id={data.room_id}
+            room_name={data.room_name}
             last_message_time={data.last_message_time}
             last_message_text={data.last_message_text}
             last_sender_nickname={data.last_sender_nickname}
@@ -114,10 +122,15 @@ const ChatItem = ({
   corrected_count,
   unread_count
 } : ChatItemProps) => {
+  const router = useRouter()
+  const moveTo = (room_id : number) => {
+    router.push(`/chat?room_id=${room_id}`)
+  }
+
   return (
     <div className="my-4 p-4 border-b-2">
       <ButtonBase 
-      onClick={() => {console.log(room_id)}}
+      onClick={() => moveTo(room_id)}
       className="flex text-left">
         <div className="flex-shrink-0">
           <Image

@@ -7,7 +7,8 @@ const giphyDomains = [
   'media2.giphy.com', 
   'media3.giphy.com', 
   'media4.giphy.com', 
-  'giphy.com'
+  'giphy.com',
+  'img1.daumcdn.net'
 ];
 
 const nextConfig: NextConfig = {
