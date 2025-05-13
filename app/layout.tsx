@@ -1,19 +1,15 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
-import localFont from "next/font/local";
 import { useEffect, useState, useTransition } from "react";
 import "./globals.css";
 
-const bmJua = localFont({
-  src: [
-    {
-      path: "./font/BMJUA_ttf.ttf",
-      weight: "normal",
-      style: "normal",
-    },
-  ],
-  variable: "--font-bm-jua",
+import { Noto_Sans_KR } from "next/font/google";
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-noto-sans-kr",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -33,14 +29,13 @@ export default function RootLayout({
   }, [isPending]);
 
   return (
-    <SessionProvider>
       <html lang="en">
         <body
-          className={`${bmJua.variable} antialiased text-[#212322] font-bm-jua`}
+          className={`${notoSansKr.variable} antialiased text-[#212322]`}
         >
           {loading && (
             <div className="fixed inset-0 flex justify-center items-center bg-opacity-50 bg-black z-50">
-              <div className="border-t-4 border-b-4 border-customYellow w-16 h-16 rounded-full animate-spin"></div>
+              <div className="border-t-4 border-b-4 border-customYellow w-16 h-16 rounded-full animate-spin"/>
             </div>
           )}
           
@@ -51,7 +46,6 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    </SessionProvider>
   );
 }
 
