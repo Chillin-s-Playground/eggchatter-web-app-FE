@@ -1,5 +1,3 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from "@mui/material/IconButton";
 
 interface PageIndicatorProps {
     text :string;
@@ -7,22 +5,20 @@ interface PageIndicatorProps {
     handleClickMenu ?: () => void
 }
 
+import { UserOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+
 const PageIndicator = ({ text, hasMenu, handleClickMenu } : PageIndicatorProps) => {
     return (
         <div className='flex justify-between items-center w-full'>
-            <p className='text-2xl font-bold'>{text}</p>
+            <p className='text-2xl' style={{ fontFamily: 'jalnan-font' }}>{text}</p>
 
             {hasMenu && (
-                <IconButton
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 2 }}
+                <Button
+                    type='text'
+                    icon={<UserOutlined style={{ fontSize: '1.6rem'}}/>}
                     onClick={handleClickMenu}
-                >
-                <MenuIcon />
-              </IconButton>
+                />
             )}
         </div>
     )
